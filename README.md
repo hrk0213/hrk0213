@@ -19,13 +19,15 @@
 
 ## 1. 越境 EC（Shopee・JOOM）
 
-**全体の設計（何を出す → 出す → 値段 → 反応 → 直す・消す を全店共通で回す形。人が決める 6 つ・作る順番・店ごとの今の状態）：[docs/売上利益の要_設計.md](docs/売上利益の要_設計.md)（2026-10-13）**
+**全体図（1 枚で見る：段ごとの道具・状態・止まっている理由・完成までの順番）：[店の運用 全体図](https://claude.ai/artifact/PE5Vpo6ha7oh1hWRVez6jh)（2026-10-15。設計を変えたら同じ日にこのページも直す）**
+
+**全体の設計（何を出す → 出す → 値段 → 反応 → 直す・消す を全店共通で回す形。人が決める 7 つ・作る順番・店ごとの今の状態）：[docs/売上利益の要_設計.md](docs/売上利益の要_設計.md)（2026-10-13）**
 
 ### お店の毎日の仕事
 
 | 仕組み | 何をする | 動き方 | 見る場所 | 最後に変えた日 |
 |---|---|---|---|---|
-| **価格改定** | Shopee 6 店（BR・TW・Japan Court・PH2・MY2・SG2）と JOOM の値段を毎日直す。売れたら少し上げ、売れなければ下げる。PHは購入済み価格を保護 | PC で自動（**常駐のループが古い版のまま。ひろきが Tools\ループを新しい版で起動し直す.bat を押すまで、ライバル追随の例外が効かない**） | [価格改定モニター](https://claude.ai/artifact/5NUPzvNYan17Pswrr2SkN7)（状況・値上げ中・ライバル合わせ・要確認・ルール）／決まり：[価格改定ツールの説明](https://github.com/hrk0213/shopee-listing-tool#readme) | 10/10 |
+| **価格改定** | Shopee 6 店（BR・TW・Japan Court・PH2・MY2・SG2）と JOOM の値段を毎日直す。売れたら少し上げ、売れなければ下げる。PHは購入済み価格を保護 | PC で自動（**常駐のループが古い版のまま。ひろきがエクスプローラーのアドレス欄に `C:\Users\hrk02\Documents\Codex\2026-08-28\referenced-chatgpt-conversation-this-is-an\work\feature-auto-category-20260828\bin\Tools` を貼って開き、「ループを新しい版で起動し直す.bat」をダブルクリックするまで、ライバル追随の例外が効かない**） | [価格改定モニター](https://claude.ai/artifact/5NUPzvNYan17Pswrr2SkN7)（状況・値上げ中・ライバル合わせ・要確認・ルール）／決まり：[価格改定ツールの説明](https://github.com/hrk0213/shopee-listing-tool#readme) | 10/10 |
 | 価格改定の判断待ちの知らせ | 人が決める事があれば知らせる | 毎朝 8:46 自動 | 価格改定モニターの「要確認」 | 10/5 |
 | **ライバル追随** | ライバルより少し安く入れる。どの商品をどのライバルと比べるかは人が表に書く | front_list の確定 OK → 例外ファイル → PC、まで出来た（10/13）。値段の取り直しは毎週火曜 10:10 に自動（初回 10/20） | [ライバル追随タブ（スプレッドシート）](https://docs.google.com/spreadsheets/d/1rjPM2wUejlKJsxi8nhvaHy5UI57FeWDIv3vpT828Cmo) | 10/14 |
 | **チャット自動返信** | GPT-lunaが質問ごとに既存定型文を組み合わせて回答漏れを確認する。日次採点・再検証を通った対応例を次に使う。仕入れ連絡は1回送り、結果報告の再試行と注文ごとの自動確認を行う | サーバーで自動。対応例の採点はGitHub Actionsで毎日20:07。店の方針保守はClaudeの手順を維持 | [チャット自動返信の説明](https://github.com/hrk0213/shopee-chat-auto-reply#readme) | 10/12 |
