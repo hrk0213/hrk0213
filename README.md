@@ -3,7 +3,7 @@
 **ここが全部の入口です。** どの仕組みが何をしていて、どこを見ればよいかを 1 ページにまとめています。
 仕組みを足したり変えたりしたら、Claude が同じ作業の中でこのページを直し、一番下の「変更の記録」に 1 行書きます。
 
-最終更新：2026-10-20
+最終更新：2026-10-21
 
 ---
 
@@ -61,6 +61,7 @@
 | JOOM の未許可ブランドのまとめ | 申請が要るブランドをまとめる（申請はひろき） | 毎週月曜 8:43 自動 | ― | 10/6 |
 | JOOM のオフライン送料表の読み直し | noborder の送料表の月替わりを取り込む。11/1 からの EU 宛の新手数料の分として、オフライン送料に一律 6 ドルを上乗せ済み（10/16） | 毎月 2 日 自動（11/2 は EU 手数料の確認も一回だけ） | ― | 10/16 |
 | JOOM 経営ダッシュボード | JOOM の売上・利益 | 毎月 5 日・20 日 自動 | [JOOM 経営ダッシュボード](https://claude.ai/artifact/Wx53P6bpWZaTsNonBbkopq) | ― |
+| **JOOM の返金補填申請** | 返金された注文を JOOM の注文から全部集め、請求候補・要判断・補填済み・請求しないに分ける。請求候補には JOOM サポートに貼る文（注文IDと理由・追跡ページ）を付ける。送るのはひろき。申請した記録はダッシュボードの「対応」欄 | Claude に頼む（GAS の refundClaimsBuild を動かす。書くのは専用ファイル「JOOM経営（ひろき専用）」の「補填申請」タブだけ） | [確認ページ](https://claude.ai/artifact/5au6W2yviAZKfCStdstSAw)／決まり：[返金補填申請](https://github.com/hrk0213/joom-sellsmart-gas/blob/main/docs/%E8%A8%88%E7%94%BB/JOOM_%E8%BF%94%E9%87%91%E8%A3%9C%E5%A1%AB%E7%94%B3%E8%AB%8B.md)・[問い合わせの型](https://github.com/hrk0213/ec-knowledge/blob/main/JOOM/63_%E8%BF%94%E9%87%91%E3%81%AE%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B_%E5%9E%8B.md) | 10/21 |
 | Shopee 損益帳・資金繰り表 | お金の流れ | 頼んだ時 | [Shopee 損益帳](https://claude.ai/artifact/TFKtRHt5nVCh8yjb2eep24)／[資金繰り表](https://claude.ai/artifact/NeXfAAfNh4xDkQr5u2rYEj) | ― |
 
 ### 決まりと知識の置き場
@@ -82,7 +83,7 @@
 | 仮想通貨ブリーフ | 相場のまとめを Discord に送る | **止めている**（10/10〜。定期タスクは残してある） | 10/10 |
 | X ブックマーク確認 | X で保存した投稿を見る | **止めている**（10/10〜。定期タスクは残してある） | 10/10 |
 | **全体の地図の見回り** | このページに漏れ・古い所が無いか、各リポジトリの 1 週間の変更と見比べて直す | 毎週月曜 10:07 自動（スマホに通知） | 10/8 |
-| **Claude タブ自動お掃除** | Claude（Claude in Chrome）が作ったタブグループを Chrome 自身が消す。✅ はすぐ、⌛ は 5 分動きが無ければ。途中で止まったチャットの分も消える。置き場所：[claude-tab-cleaner](https://github.com/hrk0213/claude-tab-cleaner)（PC の読み込み元：Claude作業集約フォルダ\chrome拡張\claude-tab-cleaner） | Chrome 拡張で自動（メインは 10/20 読み込み済み。ノートパソコン・VPN接続用クロームはまだ） | 10/20 |
+| **Claude タブ自動お掃除** | Claude（Claude in Chrome）が作ったタブグループを Chrome 自身が消す。✅ はすぐ、⌛ は 5 分動きが無ければ。途中で止まったチャットの分も消える。置き場所：[claude-tab-cleaner](https://github.com/hrk0213/claude-tab-cleaner)（PC の読み込み元：Claude作業集約フォルダ\chrome拡張\claude-tab-cleaner） | **止めている**（10/21 ひろきが削除。作業中のグループも ✅ の瞬間に閉じてしまい、Claude の作業が止まったため。作り直す予定） | 10/21 |
 
 ---
 
@@ -164,6 +165,8 @@
 
 | 日付 | 種類 | 仕組み | 内容 |
 |---|---|---|---|
+| 10/21 | 追加 | JOOM の返金補填申請 | 返金された注文から JOOM に補填を求める物を集め、まとめて 1 通で送る申請文を作る GAS（RefundClaims.gs）を本番に入れて動かした。190 件中、請求候補 49 件（うち却下済み 1 件を除いて 48 件・$3,676）。今まで落ちていた Wildberries の発送後の客キャンセル 26 件も入った。請求するのは発送後の分だけ・JOOM ロジ以外も JOOM に申請（10/20 ひろき決定） |
+| 10/21 | 止めた | Claude タブ自動お掃除 | ✅ が付いた瞬間にグループを閉じるため、作業中の Claude のタブも 1 回の操作ごとに閉じられていた（Apps Script の作業が 4 回止まった）。ひろきが拡張を削除。作り直す |
 | 10/20 | 追加 | Claude タブ自動お掃除 | Claude のタブグループを Chrome 自身が消す拡張機能を作り、メインの Chrome に入れた。置き場所は専用リポジトリ [claude-tab-cleaner](https://github.com/hrk0213/claude-tab-cleaner)（一度出品のリポジトリに入れたのは間違いで、移して消した） |
 | 10/19 | 変更 | JOOM の noborder 商品の直し | 試して分かった：JOOM 側（API・セラー画面）で直したタイトル・説明文は、noborder が送り直す時（毎晩ではない）に noborder の中身に戻る。足した種類と属性は残る。だからタイトル・説明文は noborder 側で直す（[上書き実験](https://github.com/hrk0213/shopee-br-claude-listing/blob/main/docs/%E4%BD%9C%E6%A5%AD%E8%A8%98%E9%8C%B2/2026-10-17_noborder%E4%B8%8A%E6%9B%B8%E3%81%8D%E5%AE%9F%E9%A8%93.md)） |
 | 10/18 | 変更 | JOOM の新商品を追う（Keepa） | 追うブランドは「JOOM で売れたか」で決め、追う・テスト・様子見の 3 つに分ける（ひろき決定）。Shopee の売れ行きが混ざった今の「強さ」は使わない。共通の決め：新商品を追うのは自店で売れているブランドだけ、他所で売れている物はテスト出品（[ec-knowledge](https://github.com/hrk0213/ec-knowledge)）。作り直しはこれから（[決めた事](https://github.com/hrk0213/shopee-br-claude-listing/blob/main/docs/JOOM_%E6%96%B0%E5%95%86%E5%93%81Keepa_%E7%9B%B8%E8%AB%87%E7%94%A8%E3%81%BE%E3%81%A8%E3%82%81_20261018.md)） |
